@@ -10,9 +10,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-    origin: 'https://sendanywhere-clone.onrender.com',
-}));
+express(cors())
 
 const port = process.env.PORT || 'http://localhost:3000'
 
@@ -68,11 +66,8 @@ app.get('/file/:code', (req, res) => {
         }
     });
 })
-app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
-});
+
 
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
