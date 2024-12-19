@@ -10,8 +10,7 @@ dotenv.config();
 
 const app = express();
 
-express(cors())
-
+app.use(cors());
 const port = process.env.PORT || 'http://localhost:3000'
 
 const __filename = fileURLToPath(import.meta.url);
