@@ -11,7 +11,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-const port = process.env.PORT || 'http://localhost:3000'
+const port = process.env.PORT || '3000'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,13 +64,14 @@ app.get('/file/:code', (req, res) => {
             res.status(500).send("Could not download the file.");
         }
     });
-})
+});
 
-
-
+app.get('/', (req, res) => {
+    res.send('File upload/download service is running.');
+});
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
     console.log(`Listening on port ${port}...`);
 });
